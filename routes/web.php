@@ -53,3 +53,10 @@ Route::delete('users/{user}/destroy', [UsuariogeneralController::class, 'destroy
     ->name('users.destroy')
     ->middleware('auth');
 
+Route::get('user/{id}/edit', [UsuariogeneralController::class, 'edit'])
+    ->name('user.edit')
+    ->middleware('auth');
+
+Route::put('users/{id}/update', [UsuariogeneralController::class, 'update'])
+    ->middleware('auth');
+

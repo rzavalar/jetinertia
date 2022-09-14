@@ -71,10 +71,11 @@ class UsuariogeneralController extends Controller
      * @param  \App\Models\UserGeneral  $userGeneral
      * @return \Illuminate\Http\Response
      */
-    public function edit(UserGeneral $userGeneral)
+    public function edit($id)
     {
-        //
-        return Inertia::render('FormEditar',['UserGeneral'=> $userGeneral]);
+         return Inertia::render('FormEditar', [
+         'usuario'=> Usergeneral::findOrFail($id)
+        ]);
     }
 
     /**
@@ -84,11 +85,24 @@ class UsuariogeneralController extends Controller
      * @param  \App\Models\UserGeneral  $userGeneral
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UserGeneral $userGeneral)
+    public function update(Request $request, $id)
     {
-        //
-        $userGeneral->update($request->all());
+        $request->validate([
+            'Nombre'=>'Required',
+            'Edad'=>'Required',
+            'Direccion'=>'Required',
+        ]);
+
+        $usaurio = Usergeneral::findOrFail($id);
+        
+        $usaurio->update([
+            'Nombre'=>$request->get('Nombre'),
+            'Edad'=>$request->get('Edad'),
+            'Direccion'=>$request->get('Direccion'),
+        ]);
+        
         return Redirect::route('UserGeneral.index');
+
     }
 
     /**

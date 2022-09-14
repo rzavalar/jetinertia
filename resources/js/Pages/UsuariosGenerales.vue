@@ -30,7 +30,7 @@ import route from '../../../vendor/tightenco/ziggy/src/js';
         <AppLayout title="Dashboard">
             <template #header>
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                   USer
+                   users
                 </h2>
             </template>
     
@@ -69,7 +69,7 @@ import route from '../../../vendor/tightenco/ziggy/src/js';
                                     <td class="px-6 py-4 whitespace-nowrap">{{usuario.Direccion}}</td>
                                     <td class="flex m-2">
                                         <Link
-                                                    :href ="route('UserGeneral.edit', usuario.id)"
+                                                    :href ="`user/`+usuario.id+`/edit`"
                                                     class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
                                                     type="button"
                                         >                           
